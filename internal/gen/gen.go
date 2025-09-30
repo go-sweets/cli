@@ -1,8 +1,8 @@
 package gen
 
 import (
-	"github.com/mix-plus/go-mixplus/tools/mpctl/internal/gen/gorm"
-	"github.com/mix-plus/go-mixplus/tools/mpctl/internal/gen/migrate"
+	"github.com/go-sweets/cli/internal/gen/gorm"
+	"github.com/go-sweets/cli/internal/gen/migrate"
 	"github.com/spf13/cobra"
 )
 

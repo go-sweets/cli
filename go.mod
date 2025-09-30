@@ -1,4 +1,4 @@
-module github.com/mix-plus/go-mixplus/tools/mpctl
+module github.com/go-sweets/cli
 
 go 1.18
 
