@@ -11,8 +11,8 @@ import (
 
 var UpgradeCmd = &cobra.Command{
 	Use:     "upgrade",
-	Short:   "upgrade the go-mixplus cli",
-	Long:    "upgrade the go-mixplus cli",
+	Short:   "upgrade swe-cli",
+	Long:    "upgrade swe-cli",
 	Run:     upgradeRun,
 	Version: CLIVersion,
 }
@@ -20,18 +20,18 @@ var UpgradeCmd = &cobra.Command{
 var cliRepoUrl string
 
 func init() {
-	cliRepoUrl = "github.com/mix-plus/go-mixplus/tools/mpctl"
+	cliRepoUrl = "github.com/go-sweets/cli"
 }
 
 func upgradeRun(_ *cobra.Command, args []string) {
-	resp, err := http.Get("https://raw.githubusercontent.com/mix-plus/go-mixplus/master/tools/mpctl/cmd/version.go")
+	resp, err := http.Get("https://raw.githubusercontent.com/go-sweets/cli/master/internal/version.go")
 	if err != nil {
 		panic(err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != 200 {
-		fmt.Println("Upgrade go-mixplus cli failed.")
+		fmt.Println("Upgrade swe-cli failed.")
 		panic(err)
 	}
 
@@ -52,25 +52,25 @@ func upgradeRun(_ *cobra.Command, args []string) {
 	isUpgrade := VersionCompare(version, CLIVersion)
 	switch isUpgrade {
 	case 0:
-		fmt.Println("The go-mixplus cli is the latest version.")
+		fmt.Println("swe-cli is the latest version.")
 	case 1:
-		fmt.Println("Upgrade mpctl to version:", version)
+		fmt.Println("Upgrade swe-cli to version:", version)
 		upgradeFunc := func(upgradeCmd string) (err error) {
 			cmd := exec.Command("go", upgradeCmd, cliRepoUrl+"@v"+CLIVersion)
-			fmt.Printf("Upgrade go-mixplus cli: %s\n", cmd.String())
+			fmt.Printf("Upgrade swe-cli: %s\n", cmd.String())
 			err = cmd.Run()
 			if err != nil {
-				fmt.Println("Upgrade go-mixplus cli failed.", err.Error())
+				fmt.Println("Upgrade swe-cli failed.", err.Error())
 			}
 			return err
 		}
 		if err1 := upgradeFunc("get"); err1 != nil {
 			if err2 := upgradeFunc("install"); err2 != nil {
-				fmt.Println("Upgrade go-mixplus cli failed.")
+				fmt.Println("Upgrade swe-cli failed.")
 			}
 		}
 		fmt.Println(" > ok.")
 	case 2:
-		fmt.Println("The go-mixplus cli is a higher version than the latest version.")
+		fmt.Println("swe-cli is a higher version than the latest version.")
 	}
 }

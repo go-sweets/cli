@@ -24,8 +24,8 @@ import (
 
 var CmdGorm = &cobra.Command{
 	Use:   "gorm",
-	Short: "Generate gorm model from database. Example: mpctl gen gorm",
-	Long:  "Generate gorm model from database. Example: mpctl gen gorm",
+	Short: "Generate gorm model from database. Example: swe-cli gen gorm",
+	Long:  "Generate gorm model from database. Example: swe-cli gen gorm",
 	Run:   run,
 }
 

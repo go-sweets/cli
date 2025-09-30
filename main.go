@@ -1,16 +1,16 @@
 package main
 
 import (
-	"github.com/mix-plus/go-mixplus/tools/mpctl/internal"
-	"github.com/mix-plus/go-mixplus/tools/mpctl/internal/gen"
+	"github.com/go-sweets/cli/internal"
+	"github.com/go-sweets/cli/internal/gen"
 	"github.com/spf13/cobra"
 	"log"
 )
 
 var rootCmd = &cobra.Command{
-	Use:     "go-mixplus",
-	Short:   "go-mixplus: An elegant toolkit for Go microservices.",
-	Long:    `go-mixplus: An elegant toolkit for Go microservices.`,
+	Use:     "swe-cli",
+	Short:   "swe-cli: CloudWeGo microservice project generator",
+	Long:    `swe-cli: A CLI tool for generating CloudWeGo-based microservice projects using Hertz and Kitex.`,
 	Version: internal.CLIVersion,
 }
 
