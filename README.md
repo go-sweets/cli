@@ -16,9 +16,9 @@ A CLI tool for generating CloudWeGo-based microservice projects using Hertz (HTT
 
 ### From Source
 ```bash
-# Clone the go-sweets repository
-git clone <repository-url>
-cd go-sweets/cli
+# Clone the cli repository
+git clone https://github.com/go-sweets/cli
+cd cli
 
 # Build the CLI tool
 go build -o swe-cli main.go
